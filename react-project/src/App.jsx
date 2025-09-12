@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import chef from "./images/chef.jpg";
 
@@ -24,9 +25,9 @@ const dishObjects = items.map((dish, i) => ({
 function Main({ dishes }) {
   return (
     <>
-      <div>
+      <>
         <h2>Welcome to this beautiful restaurant!</h2>
-      </div>
+      </>
       <main>
         <img
           src={chef}
@@ -49,8 +50,11 @@ function Main({ dishes }) {
 }
 
 function App() {
+  const [state, setState] = useState("Open");
   return (
     <div>
+      <p>The restaurant is {state}.</p>
+      <button onClick={() => setState(state == "Open" ? "Closed" : "Open") }>Close</button>
       <Header name="Alex" year={new Date().getFullYear()} />
       <Main dishes={dishObjects} />
     </div>
